@@ -64,10 +64,11 @@ app.use("/api/v1/loanDetails", loanDetailsRouter);
 app.use("/api/v1/Schemes", SchemeRouter);
 // * -----------------------------------------------------------
 // Serve React frontend
-app.use(express.static(path.join(__dirname, "../frontend/dist")));
+// Serve React frontend
+app.use(express.static(path.join(__dirname, "frontend/dist")));
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../frontend/dist", "index.html"));
+app.get(/^\/(?!api).*/, (req, res) => {
+  res.sendFile(path.resolve(__dirname, "frontend/dist", "index.html"));
 });
 const port = process.env.PORT || 3000;
 
