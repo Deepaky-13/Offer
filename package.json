@@ -4,12 +4,11 @@
   "description": "",
   "main": "server.js",
   "type": "module",
- "scripts": {
-  "start": "node server.js",
-  "server": "nodemon server.js",
-  "dev": "concurrently \"npm run server\" \"npm run client\""
-},
-
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "dev": "concurrently \"npm run server\" \"npm run frontend\""
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
