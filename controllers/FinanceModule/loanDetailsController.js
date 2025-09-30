@@ -46,6 +46,7 @@ export const createLoanDetails = async (req, res) => {
 
       invoice: uploadedFiles["invoice"] || null,
       shopDetails: uploadedFiles["shopDetails"] || null,
+      photo: uploadedFiles["photo"] || null,
     });
 
     await loanDetail.save();

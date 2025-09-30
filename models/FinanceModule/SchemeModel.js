@@ -11,10 +11,10 @@ const schemeSchema = new mongoose.Schema(
       enum: ["Manufacturer Tie Up", "Non-Tie Up Scheme", "General"],
       default: "General",
     },
-    downPayment: { type: Number, default: 0 },
+    downPayment: { type: Number, default: 0 }, // Fixed amount
     roi: { type: Number, default: 0 }, // Annual rate %
-    processingFeePercent: { type: Number, default: 0 }, // %
-    dbdPercent: { type: Number, default: 0 }, // %
+    processingFee: { type: Number, default: 0 }, // Fixed amount
+    dbd: { type: Number, default: 0 }, // Fixed amount
     invoiceExpiryDate: { type: Date },
   },
   { timestamps: true }

@@ -5,6 +5,7 @@ import {
   getAsset,
   updateAsset,
   deleteAsset,
+  updateEMIPayment,
 } from "../../controllers/FinanceModule/assetsProperty.js";
 import AssetDetails from "../../models/FinanceModule/AssetDetails.js";
 
@@ -16,6 +17,7 @@ router.get("/", getAllAssets); // Get all assets
 router.get("/:id", getAsset); // Get single asset
 router.put("/:id", updateAsset); // Update asset
 router.delete("/:id", deleteAsset); // Delete asset
+router.patch("/updateEmi/:id", updateEMIPayment);
 // PATCH /assetDetails/:id/payEmi/:index
 // PATCH /assetDetails/:id/payEmi/:index
 router.patch("/:id/payEmi/:index", async (req, res) => {

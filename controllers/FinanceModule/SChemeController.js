@@ -39,17 +39,20 @@ export const getSchemesForLoan = async (req, res) => {
 
       const monthlyRate = scheme.roi / 100 / 12;
       const emi =
-        (principal * monthlyRate * (1 + monthlyRate) ** n) /
-        ((1 + monthlyRate) ** n - 1);
+        monthlyRate > 0
+          ? (principal * monthlyRate * Math.pow(1 + monthlyRate, n)) /
+            (Math.pow(1 + monthlyRate, n) - 1)
+          : principal / n;
 
-      const processingFee = (loanAmount * scheme.processingFeePercent) / 100;
-      const dbdValue = (loanAmount * scheme.dbdPercent) / 100;
+      // Use fixed amounts from scheme
+      const processingFee = scheme.processingFee || 0;
+      const dbdValue = scheme.dbd || 0;
 
       return {
         ...scheme._doc,
         emi: Math.round(emi),
         processingFee: Math.round(processingFee),
-        dbd: `₹${Math.round(dbdValue)} / ${scheme.dbdPercent}%`,
+        dbd: Math.round(dbdValue),
       };
     });
 
